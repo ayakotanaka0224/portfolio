@@ -17,9 +17,6 @@
         <router-link class="nav-link" to="/">Blog</router-link>
       </li>
     </ul>
-    <button class="navbar-toggler position-absolute humberger-bar">
-      <img src="@/assets/img/header-panel.svg" alt="menu" />
-    </button>
   </header>
 </template>
 <style scoped>
