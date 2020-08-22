@@ -3,16 +3,49 @@
     <button class="navbar-toggler position-absolute humberger-bar">
       <img src="@/assets/img/header-panel.svg" alt="menu" />
     </button>
-    <div class="container h-100">
-      <div class="row align-items-center h-100">
-        <div class="card col-6">a</div>
-        <div class="card col-6">b</div>
-        <div class="card col-6">c</div>
-        <div class="card col-6">d</div>
+    <div class="container h-100 menu-cards">
+      <div class="row align-items-center justify-content-between h-100">
+        <div class="col-8 col-lg-5">
+          <div class="card m-auto">
+            <div class="card-body">
+              <h5 class="card-title">About Me</h5>
+              <p class="card-text">私がどのようにプログラミングに触れてきたか など、私の人生を紹介します。</p>
+              <p class="card-subtext">Do you know me?</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-8 col-lg-5">
+          <div class="card m-auto">
+            <div class="card-body">
+              <h5 class="card-title">Skills</h5>
+              <p class="card-text">大学から始めたプログラミングで 習得した言語やスキルを載せています。</p>
+              <p class="card-subtext">My focus is on ...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-8 col-lg-5">
+          <div class="card m-auto">
+            <div class="card-body">
+              <h5 class="card-title">Works</h5>
+              <p class="card-text">今まで私が関わったプロジェクトの成果物を 載せています。</p>
+              <p class="card-subtext">What I did ...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-8 col-lg-5">
+          <div class="card m-auto">
+            <div class="card-body">
+              <h5 class="card-title">Blog</h5>
+              <p class="card-text">三日坊主なので更新頻度は低いですが、 日常を呟きます。</p>
+              <p class="card-subtext">My daily life ...</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </template>
+
 <style scoped>
 #menu-list {
   height: 100vh;
@@ -20,12 +53,12 @@
   background: #fff;
 }
 
-.humberger-bar {
+#menu-list .humberger-bar {
   right: 50px;
   top: 50px;
 }
 
-.humberger-bar::before {
+#menu-list .humberger-bar::before {
   content: "";
   background-image: url(../assets/img/header-bar.svg);
   width: 213px;
@@ -37,8 +70,50 @@
   right: -68px;
 }
 
-.header-menu {
-  height: 100vh;
+#menu-list .header-menu {
+  min-height: 100vh;
+  height: auto;
   width: 100%;
+}
+
+#menu-list .menu-cards {
+  width: 60%;
+}
+
+#menu-list .card {
+  border: none;
+  box-shadow: 0 0 36px #ffe2c6;
+}
+
+#menu-list .card-title {
+  font-size: 24px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  color: #515151;
+}
+
+#menu-list .card-title:after {
+  content: "";
+  background: #a3a3a3;
+  width: 30px;
+  height: 1px;
+  display: flex;
+  margin-left: 24px;
+}
+
+#menu-list .card-text {
+  font-size: 16px;
+  color: #777;
+  text-align: left;
+}
+
+#menu-list .card-subtext {
+  font-family: "Sacramento", cursive;
+  font-size: 24px;
+  color: #ffb874;
+  transform: rotate(-10deg);
+  text-align: right;
+  margin: 28px 0 0;
 }
 </style>
