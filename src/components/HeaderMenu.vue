@@ -5,39 +5,12 @@
     </button>
     <div class="container h-100 menu-cards">
       <div class="row align-items-center justify-content-between h-100">
-        <div class="col-8 col-lg-5">
+        <div v-for="card in cards" :key="card.title" class="col-8 col-lg-5">
           <div class="card m-auto">
             <div class="card-body">
-              <h5 class="card-title">About Me</h5>
-              <p class="card-text">私がどのようにプログラミングに触れてきたか など、私の人生を紹介します。</p>
-              <p class="card-subtext">Do you know me?</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-8 col-lg-5">
-          <div class="card m-auto">
-            <div class="card-body">
-              <h5 class="card-title">Skills</h5>
-              <p class="card-text">大学から始めたプログラミングで 習得した言語やスキルを載せています。</p>
-              <p class="card-subtext">My focus is on ...</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-8 col-lg-5">
-          <div class="card m-auto">
-            <div class="card-body">
-              <h5 class="card-title">Works</h5>
-              <p class="card-text">今まで私が関わったプロジェクトの成果物を 載せています。</p>
-              <p class="card-subtext">What I did ...</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-8 col-lg-5">
-          <div class="card m-auto">
-            <div class="card-body">
-              <h5 class="card-title">Blog</h5>
-              <p class="card-text">三日坊主なので更新頻度は低いですが、 日常を呟きます。</p>
-              <p class="card-subtext">My daily life ...</p>
+              <h5 class="card-title">{{card.title}}</h5>
+              <p class="card-text">{{card.text}}</p>
+              <p class="card-subtext">{{card.subText}}</p>
             </div>
           </div>
         </div>
@@ -45,6 +18,37 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    cards: [
+      {
+        title: "About Me",
+        text:
+          "私がどのようにプログラミングに触れてきたか など、私の人生を紹介します。",
+        subText: "Do you know me?"
+      },
+      {
+        title: "Skills",
+        text:
+          "大学から始めたプログラミングで 習得した言語やスキルを載せています。",
+        subText: "My focus is on ..."
+      },
+      {
+        title: "Works",
+        text: "今まで私が関わったプロジェクトの成果物を 載せています。",
+        subText: "What I did ..."
+      },
+      {
+        title: "Blog",
+        text: "三日坊主なので更新頻度は低いですが、 日常を呟きます。",
+        subText: "My daily life ..."
+      }
+    ]
+  })
+};
+</script>
 
 <style scoped>
 #menu-list {

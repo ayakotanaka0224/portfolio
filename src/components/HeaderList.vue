@@ -19,6 +19,7 @@
     </ul>
   </header>
 </template>
+
 <style scoped>
 header {
   height: 100px;
