@@ -4,7 +4,7 @@
       <router-link class="logo" to="/">
         <img src="@/assets/img/site-logo.svg" alt="ayako-site" />
       </router-link>
-      <ul class="nav-list d-flex">
+      <ul class="nav-list d-none d-md-flex">
         <li v-for="navItem in menuInfo" :key="navItem.title" class="nav-item">
           <a class="nav-link" :href="navItem.url">{{navItem.title}}</a>
         </li>
@@ -16,7 +16,7 @@
     <section id="menu-list" class="position-fixed" :class="{'d-none': isActive}">
       <div class="container h-100 menu-cards">
         <div class="row align-items-center justify-content-between h-100">
-          <div v-for="card in menuInfo" :key="card.title" class="col-8 col-lg-5">
+          <div v-for="card in menuInfo" :key="card.title" class="col-12 col-lg-5 py-3 py-lg-0">
             <a
               class="card border-0 m-auto"
               :style="{ boxShadow: '0 0 36px ' + card.shadowColor}"
@@ -25,7 +25,10 @@
               <div class="card-body">
                 <h5 class="card-title">{{card.title}}</h5>
                 <p class="card-text">{{card.text}}</p>
-                <p class="card-subtext" :style="{ color: card.subTextColor}">{{card.subText}}</p>
+                <p
+                  class="card-subtext d-none d-lg-block"
+                  :style="{ color: card.subTextColor}"
+                >{{card.subText}}</p>
               </div>
             </a>
           </div>
@@ -175,5 +178,18 @@ header .nav-link:hover {
   transform: rotate(-10deg);
   text-align: right;
   margin: 28px 0 0;
+}
+
+@media screen and (max-width: 961px) {
+  /* lg */
+  #menu-list {
+    position: absolute !important;
+    height: auto;
+  }
+  #menu-list .menu-cards {
+    position: relative;
+    top: 140px;
+    width: 100%;
+  }
 }
 </style>
