@@ -6,7 +6,7 @@
       </router-link>
       <ul class="nav-list d-flex">
         <li v-for="navItem in menuInfo" :key="navItem.title" class="nav-item">
-          <router-link class="nav-link" to="/">{{navItem.title}}</router-link>
+          <a class="nav-link" :href="navItem.url">{{navItem.title}}</a>
         </li>
       </ul>
     </header>
@@ -17,17 +17,17 @@
       <div class="container h-100 menu-cards">
         <div class="row align-items-center justify-content-between h-100">
           <div v-for="card in menuInfo" :key="card.title" class="col-8 col-lg-5">
-            <router-link
+            <a
               class="card border-0 m-auto"
               :style="{ boxShadow: '0 0 36px ' + card.shadowColor}"
-              to="/"
+              :href="card.url"
             >
               <div class="card-body">
                 <h5 class="card-title">{{card.title}}</h5>
                 <p class="card-text">{{card.text}}</p>
                 <p class="card-subtext" :style="{ color: card.subTextColor}">{{card.subText}}</p>
               </div>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -51,7 +51,8 @@ export default {
           "私がどのようにプログラミングに触れてきたか など、私の人生を紹介します。",
         subText: "Do you know me?",
         shadowColor: "#ffe2c6",
-        subTextColor: "#ffb874"
+        subTextColor: "#ffb874",
+        url: "about-me"
       },
       {
         title: "Skills",
@@ -59,21 +60,24 @@ export default {
           "大学から始めたプログラミングで 習得した言語やスキルを載せています。",
         subText: "My focus is on ...",
         shadowColor: "#bee4ec",
-        subTextColor: "#94dded"
+        subTextColor: "#94dded",
+        url: "skills"
       },
       {
         title: "Works",
         text: "今まで私が関わったプロジェクトの成果物を 載せています。",
         subText: "What I did ...",
         shadowColor: "#e9d7ff",
-        subTextColor: "#c99eff"
+        subTextColor: "#c99eff",
+        url: "works"
       },
       {
         title: "Blog",
         text: "三日坊主なので更新頻度は低いですが、 日常を呟きます。",
         subText: "My daily life ...",
         shadowColor: "#ffd0d0",
-        subTextColor: "#ec8d8d"
+        subTextColor: "#ec8d8d",
+        url: "blog"
       }
     ]
   })
@@ -121,11 +125,9 @@ header .nav-link:hover {
 
 .humberger-bar::before {
   content: "";
-  background-image: url(../assets/img/header-bar.svg);
+  background: 0% / contain no-repeat url(../assets/img/header-bar.svg);
   width: 213px;
   height: 55px;
-  background-size: contain;
-  background-repeat: no-repeat;
   position: absolute;
   top: -40px;
   right: -68px;
@@ -137,6 +139,11 @@ header .nav-link:hover {
 
 #menu-list .card {
   text-decoration: none;
+  transition: transform 0.4s;
+}
+
+#menu-list .card:hover {
+  transform: scale(1.05);
 }
 
 #menu-list .card-title {
