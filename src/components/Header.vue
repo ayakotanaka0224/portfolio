@@ -19,10 +19,10 @@
         </li>
       </ul>
     </header>
-    <section id="menu-list" class="positon-fixed">
-      <button class="navbar-toggler position-absolute humberger-bar">
-        <img src="@/assets/img/header-panel.svg" alt="menu" />
-      </button>
+    <button class="navbar-toggler position-fixed humberger-bar">
+      <img src="@/assets/img/header-panel.svg" alt="menu" />
+    </button>
+    <section id="menu-list" class="position-fixed">
       <div class="container h-100 menu-cards">
         <div class="row align-items-center justify-content-between h-100">
           <div v-for="card in cards" :key="card.title" class="col-8 col-lg-5">
@@ -102,39 +102,23 @@ header .nav-link:hover {
   color: #515151;
 }
 
-header .humberger-bar {
-  right: 50px;
-  top: 50px;
-}
-
-header .humberger-bar::before {
-  content: "";
-  background-image: url(../assets/img/header-bar.svg);
-  width: 213px;
-  height: 55px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: -40px;
-  right: -68px;
-}
-
 #menu-list {
   height: 100vh;
   width: 100%;
   background: #fff;
 }
 
-#menu-list .humberger-bar {
+.humberger-bar {
   right: 50px;
   top: 50px;
+  z-index: 1;
 }
 
-#menu-list .humberger-bar:focus {
+.humberger-bar:focus {
   box-shadow: none;
 }
 
-#menu-list .humberger-bar::before {
+.humberger-bar::before {
   content: "";
   background-image: url(../assets/img/header-bar.svg);
   width: 213px;
@@ -144,12 +128,6 @@ header .humberger-bar::before {
   position: absolute;
   top: -40px;
   right: -68px;
-}
-
-#menu-list .header-menu {
-  min-height: 100vh;
-  height: auto;
-  width: 100%;
 }
 
 #menu-list .menu-cards {
