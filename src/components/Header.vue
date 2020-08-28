@@ -17,13 +17,17 @@
       <div class="container h-100 menu-cards">
         <div class="row align-items-center justify-content-between h-100">
           <div v-for="card in menuInfo" :key="card.title" class="col-8 col-lg-5">
-            <div class="card border-0 m-auto" :style="{ boxShadow: '0 0 36px ' + card.shadowColor}">
+            <router-link
+              class="card border-0 m-auto"
+              :style="{ boxShadow: '0 0 36px ' + card.shadowColor}"
+              to="/"
+            >
               <div class="card-body">
                 <h5 class="card-title">{{card.title}}</h5>
                 <p class="card-text">{{card.text}}</p>
                 <p class="card-subtext" :style="{ color: card.subTextColor}">{{card.subText}}</p>
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -129,6 +133,10 @@ header .nav-link:hover {
 
 #menu-list .menu-cards {
   width: 60%;
+}
+
+#menu-list .card {
+  text-decoration: none;
 }
 
 #menu-list .card-title {
