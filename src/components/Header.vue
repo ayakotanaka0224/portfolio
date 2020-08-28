@@ -5,7 +5,7 @@
         <img src="@/assets/img/site-logo.svg" alt="ayako-site" />
       </router-link>
       <ul class="nav-list d-none d-md-flex">
-        <li v-for="navItem in menuInfo" :key="navItem.title" class="nav-item">
+        <li v-for="navItem in menuInfo" :key="navItem.title">
           <a class="nav-link" :href="navItem.url">{{navItem.title}}</a>
         </li>
       </ul>
@@ -87,97 +87,84 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
   height: 100px;
   padding: 20px;
-}
-
-header .logo {
-  padding: 12px;
-}
-
-header .nav-list {
-  list-style-type: none;
-  margin-bottom: 0;
-}
-
-header .nav-link {
-  color: #777;
-}
-
-header .nav-link:hover {
-  color: #515151;
-}
-
-#menu-list {
-  height: 100vh;
-  width: 100%;
-  background: #fff;
+  .logo {
+    padding: 12px;
+  }
+  .nav-list {
+    list-style-type: none;
+    margin-bottom: 0;
+    .nav-link {
+      color: #777;
+      &:hover {
+        color: #515151;
+      }
+    }
+  }
 }
 
 .humberger-bar {
   right: 50px;
   top: 50px;
   z-index: 1;
+  &:focus {
+    box-shadow: none;
+  }
+  &:before {
+    content: "";
+    background: 0% / contain no-repeat url(../assets/img/header-bar.svg);
+    width: 213px;
+    height: 55px;
+    position: absolute;
+    top: -40px;
+    right: -68px;
+  }
 }
 
-.humberger-bar:focus {
-  box-shadow: none;
-}
-
-.humberger-bar::before {
-  content: "";
-  background: 0% / contain no-repeat url(../assets/img/header-bar.svg);
-  width: 213px;
-  height: 55px;
-  position: absolute;
-  top: -40px;
-  right: -68px;
-}
-
-#menu-list .menu-cards {
-  width: 60%;
-}
-
-#menu-list .card {
-  text-decoration: none;
-  transition: transform 0.4s;
-}
-
-#menu-list .card:hover {
-  transform: scale(1.05);
-}
-
-#menu-list .card-title {
-  font-size: 24px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  color: #515151;
-}
-
-#menu-list .card-title:after {
-  content: "";
-  background: #a3a3a3;
-  width: 30px;
-  height: 1px;
-  display: flex;
-  margin-left: 24px;
-}
-
-#menu-list .card-text {
-  font-size: 16px;
-  color: #777;
-  text-align: left;
-}
-
-#menu-list .card-subtext {
-  font-family: "Sacramento", cursive;
-  font-size: 24px;
-  transform: rotate(-10deg);
-  text-align: right;
-  margin: 28px 0 0;
+#menu-list {
+  height: 100vh;
+  width: 100%;
+  background: #fff;
+  .menu-cards {
+    width: 60%;
+    .card {
+      text-decoration: none;
+      transition: transform 0.4s;
+      &:hover {
+        transform: scale(1.05);
+      }
+      .card-title {
+        font-size: 24px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        color: #515151;
+        &:after {
+          content: "";
+          background: #a3a3a3;
+          width: 30px;
+          height: 1px;
+          display: flex;
+          margin-left: 24px;
+        }
+      }
+      .card-text {
+        font-size: 16px;
+        color: #777;
+        text-align: left;
+      }
+      .card-subtext {
+        font-family: "Sacramento", cursive;
+        font-size: 24px;
+        transform: rotate(-10deg);
+        text-align: right;
+        margin: 28px 0 0;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 961px) {
@@ -185,11 +172,11 @@ header .nav-link:hover {
   #menu-list {
     position: absolute !important;
     height: auto;
-  }
-  #menu-list .menu-cards {
-    position: relative;
-    top: 140px;
-    width: 100%;
+    .menu-cards {
+      position: relative;
+      top: 140px;
+      width: 100%;
+    }
   }
 }
 </style>
