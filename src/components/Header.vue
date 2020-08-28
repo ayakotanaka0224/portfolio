@@ -19,10 +19,10 @@
         </li>
       </ul>
     </header>
-    <button class="navbar-toggler position-fixed humberger-bar">
+    <button class="navbar-toggler position-fixed humberger-bar" @click="toggleMenu">
       <img src="@/assets/img/header-panel.svg" alt="menu" />
     </button>
-    <section id="menu-list" class="position-fixed">
+    <section id="menu-list" class="position-fixed" :class="{'d-none': isActive}">
       <div class="container h-100 menu-cards">
         <div class="row align-items-center justify-content-between h-100">
           <div v-for="card in cards" :key="card.title" class="col-8 col-lg-5">
@@ -42,7 +42,13 @@
 
 <script>
 export default {
+  methods: {
+    toggleMenu() {
+      this.isActive = !this.isActive;
+    }
+  },
   data: () => ({
+    isActive: true,
     cards: [
       {
         title: "About Me",
