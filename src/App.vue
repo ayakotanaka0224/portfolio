@@ -1,20 +1,17 @@
 <template>
   <div id="app">
-    <HeaderList />
-    <HeaderMenu />
+    <Header />
     <router-view />
   </div>
 </template>
 
 <script>
-import HeaderList from "./components/HeaderList";
-import HeaderMenu from "./components/HeaderMenu";
+import Header from "./components/Header";
 
 export default {
   name: "app",
   components: {
-    HeaderList,
-    HeaderMenu
+    Header
   }
 };
 </script>
