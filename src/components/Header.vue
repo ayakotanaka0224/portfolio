@@ -5,17 +5,8 @@
         <img src="@/assets/img/site-logo.svg" alt="ayako-site" />
       </router-link>
       <ul class="nav-list d-flex">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">About me</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Skills</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Works</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Blog</router-link>
+        <li v-for="navItem in menuInfo" :key="navItem.title" class="nav-item">
+          <router-link class="nav-link" to="/">{{navItem.title}}</router-link>
         </li>
       </ul>
     </header>
@@ -25,7 +16,7 @@
     <section id="menu-list" class="position-fixed" :class="{'d-none': isActive}">
       <div class="container h-100 menu-cards">
         <div class="row align-items-center justify-content-between h-100">
-          <div v-for="card in cards" :key="card.title" class="col-8 col-lg-5">
+          <div v-for="card in menuInfo" :key="card.title" class="col-8 col-lg-5">
             <div class="card border-0 m-auto" :style="{ boxShadow: '0 0 36px ' + card.shadowColor}">
               <div class="card-body">
                 <h5 class="card-title">{{card.title}}</h5>
@@ -49,7 +40,7 @@ export default {
   },
   data: () => ({
     isActive: true,
-    cards: [
+    menuInfo: [
       {
         title: "About Me",
         text:
