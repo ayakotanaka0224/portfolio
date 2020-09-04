@@ -136,9 +136,9 @@ header {
     width: 60%;
     .card {
       text-decoration: none;
-      transition: transform 0.4s;
+      transition: transform 0.2s;
       &:hover {
-        transform: scale(1.05);
+        transform: scale(1.03);
       }
       .card-title {
         font-size: 24px;
