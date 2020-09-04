@@ -89,10 +89,14 @@ export default {
 
 <style lang="scss" scoped>
 header {
+  position: absolute;
+  top: 0;
   height: 100px;
   padding: 20px;
   .logo {
-    padding: 12px;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
   }
   .nav-list {
     list-style-type: none;
