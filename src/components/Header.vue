@@ -113,7 +113,7 @@ header {
 .humberger-bar {
   right: 50px;
   top: 50px;
-  z-index: 1;
+  z-index: 3;
   &:focus {
     box-shadow: none;
   }
