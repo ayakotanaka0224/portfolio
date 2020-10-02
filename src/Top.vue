@@ -91,6 +91,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
       margin: 40px;
       .picture {
         height: 200px;
@@ -126,6 +127,12 @@
         }
       }
     }
+  }
+}
+@media screen and (max-width: 991px) {
+  .picture {
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 }
 </style>
