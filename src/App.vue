@@ -27,9 +27,14 @@ export default {
   color: #515151;
   #menu-list {
     top: 0;
+    z-index: 2;
   }
   h1 {
     font-size: 44px;
+  }
+  a {
+    font-size: 16px;
+    text-decoration: none;
   }
 }
 </style>
