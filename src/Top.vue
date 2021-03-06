@@ -29,10 +29,54 @@
         </div>
       </div>
     </section>
+    <section id="skills">
+      <div class="container">
+        <h1 class="section-title">Skills</h1>
+        <div class="content-wrapper">
+          <div class="skill-circle">
+            <div v-for="skill in skillsCircle" :key="skill.title" class="skill">
+              <div
+                class="circle"
+                :style="{
+                  backgroundImage: `radial-gradient(#fff 60%, transparent 61%),
+      conic-gradient(
+        #f9a0a0 0deg,
+        #ffc691 ${skill.orangeDeg}deg,
+        #cde786 ${skill.yellowDeg}deg,
+        #78d582 ${skill.greenDeg}deg,
+        #e4e4e4 ${skill.greenDeg}deg 360deg
+      )`,
+                }"
+              >
+                <img :src="skill.imgUrl" alt="html" />
+              </div>
+              <span>{{ skill.title }}</span>
+            </div>
+          </div>
+          <a class="read-more ml-auto" href="skills">Read More</a>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.section-title {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  grid-auto-flow: column;
+  gap: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  &:after {
+    content: "";
+    width: 350px;
+    height: 2px;
+    background-color: #515151;
+    max-width: 50%;
+  }
+}
 .read-more {
   position: relative;
   color: #515151;
@@ -68,6 +112,11 @@
     }
   }
 }
+
+section:nth-of-type(n + 2) {
+  padding: 100px 0;
+}
+
 #top {
   height: 100vh;
   width: 100%;
@@ -84,64 +133,88 @@
   }
 }
 #about {
-  padding: 100px 0;
   background: 0% / cover no-repeat url(./assets/img/about.svg);
-  .container {
-    padding: 100px;
-    .section-title {
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px;
+    .picture {
+      height: 200px;
+      width: 200px;
+      background: 0% / cover no-repeat url(./assets/img/ayako.jpg);
+      border-radius: 20px;
+      margin-right: 60px;
+    }
+    .content {
       display: grid;
-      align-items: center;
-      justify-content: start;
-      grid-auto-flow: column;
-      gap: 12px;
-      font-weight: bold;
-      &:after {
-        content: "";
-        width: 350px;
-        height: 2px;
-        background-color: #515151;
+      gap: 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      h2 {
+        position: relative;
+        z-index: 0;
+        &:before {
+          content: "";
+          height: 10px;
+          width: calc(100% + 12px);
+          background: #ffe2c6;
+          position: absolute;
+          z-index: -1;
+          left: -6px;
+          bottom: 0px;
+        }
       }
-    }
-    .profile {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin: 40px;
-      .picture {
-        height: 200px;
-        width: 200px;
-        background: 0% / cover no-repeat url(./assets/img/ayako.jpg);
-        border-radius: 20px;
-        margin-right: 60px;
-      }
-      .content {
+      ul {
+        list-style: none;
+        text-align: left;
         display: grid;
-        gap: 24px;
-        flex-direction: column;
-        align-items: flex-start;
-        h2 {
-          position: relative;
-          z-index: 0;
-          &:before {
-            content: "";
-            height: 10px;
-            width: calc(100% + 12px);
-            background: #ffe2c6;
-            position: absolute;
-            z-index: -1;
-            left: -6px;
-            bottom: 0px;
-          }
-        }
-        ul {
-          list-style: none;
-          text-align: left;
-          display: grid;
-          gap: 12px;
-        }
+        gap: 12px;
       }
     }
+  }
+}
+#skills {
+  background: 0% / cover no-repeat url(./assets/img/skills.svg);
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .skill-circle {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin: 0 100px;
+      .skill {
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin: 32px 36px;
+      }
+      .circle {
+        position: relative;
+        width: 144px;
+        height: 144px;
+        border-radius: 50%;
+        img {
+          position: absolute;
+          width: 80px;
+          height: auto;
+          top: calc(50% - 40px);
+          right: calc(50% - 40px);
+        }
+      }
+      span {
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+    }
+  }
+  .read-more {
+    margin-right: 100px;
   }
 }
 @media screen and (max-width: 991px) {
@@ -149,5 +222,85 @@
     margin-right: 0;
     margin-bottom: 20px;
   }
+  #skills .skill-circle {
+    margin: 0 30px;
+  }
+}
+@media screen and (max-width: 550px) {
+  #skills .skill-circle .skill {
+    margin: 32px 12px;
+  }
 }
 </style>
+
+<script>
+export default {
+  data: () => ({
+    skillsCircle: [
+      {
+        title: "HTML",
+        imgUrl: require("./assets/img/html.png"),
+        orangeDeg: 100,
+        yellowDeg: 220,
+        greenDeg: 310,
+      },
+      {
+        title: "CSS",
+        imgUrl: require("./assets/img/css.png"),
+        orangeDeg: 100,
+        yellowDeg: 220,
+        greenDeg: 300,
+      },
+      {
+        title: "Figma",
+        imgUrl: require("./assets/img/figma.png"),
+        orangeDeg: 100,
+        yellowDeg: 220,
+        greenDeg: 310,
+      },
+      {
+        title: "JavaScript",
+        imgUrl: require("./assets/img/js.png"),
+        orangeDeg: 100,
+        yellowDeg: 180,
+        greenDeg: 180,
+      },
+      {
+        title: "PHP",
+        imgUrl: require("./assets/img/php.png"),
+        orangeDeg: 100,
+        yellowDeg: 220,
+        greenDeg: 260,
+      },
+      {
+        title: "WordPress",
+        imgUrl: require("./assets/img/wp.png"),
+        orangeDeg: 100,
+        yellowDeg: 220,
+        greenDeg: 280,
+      },
+      {
+        title: "Vue",
+        imgUrl: require("./assets/img/vue.png"),
+        orangeDeg: 60,
+        yellowDeg: 60,
+        greenDeg: 60,
+      },
+      {
+        title: "React",
+        imgUrl: require("./assets/img/react.png"),
+        orangeDeg: 60,
+        yellowDeg: 180,
+        greenDeg: 180,
+      },
+      {
+        title: "TypeScript",
+        imgUrl: require("./assets/img/ts.png"),
+        orangeDeg: 60,
+        yellowDeg: 160,
+        greenDeg: 160,
+      },
+    ],
+  }),
+};
+</script>
