@@ -1,11 +1,15 @@
 <template>
   <div>
     <section id="top">
-      <img class="sub-title" src="./assets/img/ayako-tanaka.svg" alt="Ayako Tanaka" />
+      <img
+        class="sub-title"
+        src="./assets/img/ayako-tanaka.svg"
+        alt="Ayako Tanaka"
+      />
     </section>
     <section id="about">
       <div class="container">
-        <h1 class="section-title">About</h1>
+        <h1 class="section-title">About me</h1>
         <div class="profile">
           <div class="picture"></div>
           <div class="content">
@@ -85,7 +89,18 @@
   .container {
     padding: 100px;
     .section-title {
-      text-align: left;
+      display: grid;
+      align-items: center;
+      justify-content: start;
+      grid-auto-flow: column;
+      gap: 12px;
+      font-weight: bold;
+      &:after {
+        content: "";
+        width: 350px;
+        height: 2px;
+        background-color: #515151;
+      }
     }
     .profile {
       display: flex;
