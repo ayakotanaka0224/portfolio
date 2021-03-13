@@ -6,29 +6,42 @@
       </router-link>
       <ul class="nav-list d-none d-md-flex">
         <li v-for="navItem in menuInfo" :key="navItem.title">
-          <a class="nav-link" :href="navItem.url">{{navItem.title}}</a>
+          <a class="nav-link" :href="navItem.url">{{ navItem.title }}</a>
         </li>
       </ul>
     </header>
-    <button class="navbar-toggler position-fixed humberger-bar" @click="toggleMenu">
+    <button
+      class="navbar-toggler position-fixed humberger-bar"
+      @click="toggleMenu"
+    >
       <img src="@/assets/img/header-panel.svg" alt="menu" />
     </button>
-    <section id="menu-list" class="position-fixed" :class="{'d-none': isActive}">
+    <section
+      id="menu-list"
+      class="position-fixed"
+      :class="{ 'd-none': isActive }"
+    >
       <div class="container h-100 menu-cards">
         <div class="row align-items-center justify-content-between h-100">
-          <div v-for="card in menuInfo" :key="card.title" class="col-12 col-lg-5 py-3 py-lg-0">
+          <div
+            v-for="card in menuInfo"
+            :key="card.title"
+            class="col-12 col-lg-5 py-3 py-lg-0"
+          >
             <a
               class="card border-0 m-auto"
-              :style="{ boxShadow: '0 0 36px ' + card.shadowColor}"
+              :style="{ boxShadow: '0 0 36px ' + card.shadowColor }"
               :href="card.url"
             >
               <div class="card-body">
-                <h5 class="card-title">{{card.title}}</h5>
-                <p class="card-text">{{card.text}}</p>
+                <h5 class="card-title">{{ card.title }}</h5>
+                <p class="card-text d-none d-md-block">{{ card.text }}</p>
                 <p
                   class="card-subtext d-none d-lg-block"
-                  :style="{ color: card.subTextColor}"
-                >{{card.subText}}</p>
+                  :style="{ color: card.subTextColor }"
+                >
+                  {{ card.subText }}
+                </p>
               </div>
             </a>
           </div>
@@ -43,7 +56,7 @@ export default {
   methods: {
     toggleMenu() {
       this.isActive = !this.isActive;
-    }
+    },
   },
   data: () => ({
     isActive: true,
@@ -55,7 +68,7 @@ export default {
         subText: "Do you know me?",
         shadowColor: "#ffe2c6",
         subTextColor: "#ffb874",
-        url: "about-me"
+        url: "about-me",
       },
       {
         title: "Skills",
@@ -64,7 +77,7 @@ export default {
         subText: "My focus is on ...",
         shadowColor: "#bee4ec",
         subTextColor: "#94dded",
-        url: "skills"
+        url: "skills",
       },
       {
         title: "Works",
@@ -72,7 +85,7 @@ export default {
         subText: "What I did ...",
         shadowColor: "#e9d7ff",
         subTextColor: "#c99eff",
-        url: "works"
+        url: "works",
       },
       {
         title: "Blog",
@@ -80,10 +93,10 @@ export default {
         subText: "My daily life ...",
         shadowColor: "#ffd0d0",
         subTextColor: "#ec8d8d",
-        url: "blog"
-      }
-    ]
-  })
+        url: "blog",
+      },
+    ],
+  }),
 };
 </script>
 
@@ -175,11 +188,13 @@ header {
   /* lg */
   #menu-list {
     position: absolute !important;
-    height: auto;
     .menu-cards {
       position: relative;
       top: 140px;
       width: 100%;
+      .row {
+        height: auto !important;
+      }
     }
   }
 }

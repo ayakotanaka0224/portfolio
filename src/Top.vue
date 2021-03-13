@@ -74,7 +74,7 @@
     width: 350px;
     height: 2px;
     background-color: #515151;
-    max-width: 50%;
+    max-width: 40%;
   }
 }
 .read-more {
@@ -129,7 +129,6 @@ section:nth-of-type(n + 2) {
     display: block;
     margin: 0 auto;
     width: 54%;
-    max-width: 100%;
   }
 }
 #about {
@@ -218,6 +217,10 @@ section:nth-of-type(n + 2) {
   }
 }
 @media screen and (max-width: 991px) {
+  #top .sub-title {
+    width: 100%;
+  }
+
   .picture {
     margin-right: 0;
     margin-bottom: 20px;
@@ -227,6 +230,9 @@ section:nth-of-type(n + 2) {
   }
 }
 @media screen and (max-width: 550px) {
+  #top {
+    padding: 20px;
+  }
   #skills .skill-circle .skill {
     margin: 32px 12px;
   }
