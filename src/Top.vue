@@ -57,6 +57,50 @@
         </div>
       </div>
     </section>
+    <section id="activity">
+      <div class="container">
+        <h1 class="section-title">Activity</h1>
+        <div class="content-wrapper">
+          <img
+            src="https://grass-graph.appspot.com/images/ayakotanaka0224.png"
+            alt="github"
+          />
+          <p class="figma-contributes">{{ allContributes }} contributions</p>
+          <div class="table">
+            <div
+              v-for="contribute in contributes"
+              :key="contribute.day"
+              class="rectangle"
+              v-bind:class="[
+                contribute.count > 30
+                  ? 'contribute-5'
+                  : contribute.count > 20
+                  ? 'contribute-4'
+                  : contribute.count > 10
+                  ? 'contribute-3'
+                  : contribute.count > 1
+                  ? 'contribute-2'
+                  : 'contribute-1',
+              ]"
+            >
+              <span class="figma-tooltip"
+                >{{ contribute.count }} version history on
+                {{ contribute.day }}</span
+              >
+            </div>
+          </div>
+          <div class="figma-base">
+            Less
+            <div class="rectangle contribute-1"></div>
+            <div class="rectangle contribute-2"></div>
+            <div class="rectangle contribute-3"></div>
+            <div class="rectangle contribute-4"></div>
+            <div class="rectangle contribute-5"></div>
+            More
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -216,6 +260,68 @@ section:nth-of-type(n + 2) {
     margin-right: 100px;
   }
 }
+#activity {
+  .content-wrapper {
+    max-width: 688px;
+    margin: auto;
+  }
+  img {
+    margin: 100px 0;
+  }
+  p.figma-contributes {
+    text-align: left;
+  }
+  .table {
+    display: flex;
+    flex-direction: column;
+    height: 88px;
+    gap: 2px;
+    flex-wrap: wrap;
+  }
+  .rectangle {
+    background-color: #ebedf0;
+    border: 1px solid rgba(27, 31, 35, 0.06);
+    border-radius: 2px;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+    &.contribute-5 {
+      background-color: #f24e1e;
+    }
+    &.contribute-4 {
+      background-color: #a259ff;
+    }
+    &.contribute-3 {
+      background-color: #0acf83;
+    }
+    &.contribute-2 {
+      background-color: #1abcfe;
+    }
+    &:hover .figma-tooltip {
+      background-color: black;
+      border-radius: 4px;
+      display: flex;
+      left: 50%;
+      padding: 6px 10px;
+      position: absolute;
+      top: 12px;
+      transform: translateX(-50%);
+      z-index: 1;
+      color: #fff;
+      white-space: nowrap;
+    }
+  }
+  .figma-base {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 4px;
+  }
+  .figma-tooltip {
+    display: none;
+  }
+}
 @media screen and (max-width: 991px) {
   #top .sub-title {
     width: 100%;
@@ -240,9 +346,10 @@ section:nth-of-type(n + 2) {
 </style>
 
 <script>
+import figmaContributes from "./figma.js";
 export default {
-  data: () => ({
-    skillsCircle: [
+  data: () => {
+    const skillsCircle = [
       {
         title: "HTML",
         imgUrl: require("./assets/img/html.png"),
@@ -306,7 +413,19 @@ export default {
         yellowDeg: 160,
         greenDeg: 160,
       },
-    ],
-  }),
+    ];
+    return {
+      skillsCircle: skillsCircle,
+      contributes: [],
+      allContributes: 0,
+    };
+  },
+  async mounted() {
+    const contributes = await figmaContributes();
+    this.contributes = contributes;
+    let contributesCount = 0;
+    contributes.map((contribute) => (contributesCount += contribute.count));
+    this.allContributes = contributesCount;
+  },
 };
 </script>
